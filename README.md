@@ -2,7 +2,7 @@
 
 A small browser game for learning the AI terminology every vibecoder runs into: LLM, tokens, context window, compaction, memory, harness, agents, MCP, skills and more.
 
-**Play it:** https://davidkjo.github.io/ai-terminology/
+**Play it:** https://banditdev-git.github.io/ai-terminology/
 
 Each one starts with a short card, then one question checks that you got it. Correct answers earn coins, which you spend upgrading a little low-poly AI rig: GPU, VRAM, cooling, training data, parameters and context window. Drag the rig to rotate it.
 
