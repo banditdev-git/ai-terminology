@@ -25,7 +25,6 @@ export function Quiz({ state, dispatch }: { state: GameState; dispatch: Dispatch
   const [results, setResults] = useState<boolean[]>([])
   const [streak, setStreak] = useState(0)
   const [runCoins, setRunCoins] = useState(0)
-  const [reread, setReread] = useState(false)
   const [showCard, setShowCard] = useState(false)
   const [shake, setShake] = useState(false)
   const [finished, setFinished] = useState(false)
@@ -48,14 +47,13 @@ export function Quiz({ state, dispatch }: { state: GameState; dispatch: Dispatch
   const restart = () => {
     sfx.click()
     setIdx(0); setPhase('learn'); setPicked(null); setResults([]); setStreak(0)
-    setRunCoins(0); setReread(false); setFinished(false); setRun((r) => r + 1)
+    setRunCoins(0); setFinished(false); setRun((r) => r + 1)
   }
 
   const next = () => {
     sfx.click()
     if (phase === 'learn') return setPhase('ask')
     setPicked(null)
-    setReread(false)
     setShowCard(false)
     if (idx + 1 >= total) {
       const score = results.filter(Boolean).length
@@ -79,8 +77,7 @@ export function Quiz({ state, dispatch }: { state: GameState; dispatch: Dispatch
     const cy = rect ? rect.top + rect.height / 2 : innerHeight / 2
 
     if (correct) {
-      let amount = state.earned[term.id] ? REPEAT_REWARD : FULL_REWARD
-      if (reread) amount = Math.ceil(amount / 2)
+      const amount = state.earned[term.id] ? REPEAT_REWARD : FULL_REWARD
       dispatch({ type: 'addCoins', amount })
       dispatch({ type: 'markEarned', id: term.id })
       setRunCoins((c) => c + amount)
@@ -168,8 +165,8 @@ export function Quiz({ state, dispatch }: { state: GameState; dispatch: Dispatch
           </div>
 
           {picked === null ? (
-            <button className="link" onClick={() => { setReread(true); setShowCard(true); sfx.click() }}>
-              {reread ? 'Read the card again' : 'Read the card again (half coins)'}
+            <button className="link" onClick={() => { setShowCard(true); sfx.click() }}>
+              Read the card again
             </button>
           ) : (
             <div className={`explain chamfer ${choices[picked].correct ? 'good' : 'bad'}`}>
