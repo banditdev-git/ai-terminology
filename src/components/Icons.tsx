@@ -141,6 +141,20 @@ export const ICONS = {
     '....KK......',
     '............',
   ],
+  github: [
+    '...KKKKKK...',
+    '.KKKKKKKKKK.',
+    '.KKWKKKKWKK.',
+    'KKKWWWWWWKKK',
+    'KKWWWWWWWWKK',
+    'KKWWWWWWWWKK',
+    'KKWWWWWWWWKK',
+    'KKKWWWWWWKKK',
+    'KWKKKWWKKKKK',
+    '.KWWWWWKKKK.',
+    '.KKKKWWKKKK.',
+    '...KKWWKK...',
+  ],
 } satisfies Record<string, Grid>
 
 export type IconName = keyof typeof ICONS

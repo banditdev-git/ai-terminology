@@ -21,7 +21,13 @@ export function App() {
       <header className="topbar">
         <div className="brand">
           <img src={`${import.meta.env.BASE_URL}favicon.svg`} width={34} height={34} alt="" />
-          <h1>AI Terminology</h1>
+          <div className="brand-text">
+            <h1>AI Terminology</h1>
+            <a className="credit" href="https://github.com/banditdev-git" target="_blank" rel="noopener noreferrer">
+              Made by: banditdev
+              <PixelIcon name="github" size={18} />
+            </a>
+          </div>
         </div>
         <div className="hud">
           <CoinCounter coins={state.coins} />
